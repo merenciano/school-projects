@@ -1,0 +1,81 @@
+
+buildobjs/inner_specialization.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <TileLightedSpecialization>:
+   0:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   4:	e28db01c 	add	fp, sp, #28
+   8:	e24dd004 	sub	sp, sp, #4
+   c:	ed2d8b04 	vpush	{d8-d9}
+  10:	eef72a00 	vmov.f32	s5, #112	; 0x3f800000  1.0
+  14:	e590c000 	ldr	ip, [r0]
+  18:	e5909004 	ldr	r9, [r0, #4]
+  1c:	e30f8e00 	movw	r8, #65024	; 0xfe00
+  20:	ed9f0a3d 	vldr	s0, [pc, #244]	; 11c <TileLightedSpecialization+0x11c>
+  24:	e3a0e000 	mov	lr, #0
+  28:	ed901a0e 	vldr	s2, [r0, #56]	; 0x38
+  2c:	e3408003 	movt	r8, #3
+  30:	ed902a0b 	vldr	s4, [r0, #44]	; 0x2c
+  34:	ed903a0c 	vldr	s6, [r0, #48]	; 0x30
+  38:	ed904a05 	vldr	s8, [r0, #20]
+  3c:	ed905a06 	vldr	s10, [r0, #24]
+  40:	ed906a08 	vldr	s12, [r0, #32]
+  44:	ed907a09 	vldr	s14, [r0, #36]	; 0x24
+  48:	edd00a02 	vldr	s1, [r0, #8]
+  4c:	edd01a03 	vldr	s3, [r0, #12]
+  50:	eddf3a32 	vldr	s7, [pc, #200]	; 120 <TileLightedSpecialization+0x120>
+  54:	eddf4a32 	vldr	s9, [pc, #200]	; 124 <TileLightedSpecialization+0x124>
+  58:	ee725ac0 	vsub.f32	s11, s5, s0
+  5c:	ee606a07 	vmul.f32	s13, s0, s14
+  60:	ee607a03 	vmul.f32	s15, s0, s6
+  64:	ee208a06 	vmul.f32	s16, s0, s12
+  68:	ee209a02 	vmul.f32	s18, s0, s4
+  6c:	ee456aa1 	vmla.f32	s13, s11, s3
+  70:	ee457a85 	vmla.f32	s15, s11, s10
+  74:	ee058aa0 	vmla.f32	s16, s11, s1
+  78:	ee059a84 	vmla.f32	s18, s11, s8
+  7c:	ee775ae6 	vsub.f32	s11, s15, s13
+  80:	ee797a48 	vsub.f32	s15, s18, s16
+  84:	ee666aa4 	vmul.f32	s13, s13, s9
+  88:	ee288a24 	vmul.f32	s16, s16, s9
+  8c:	ee655aa3 	vmul.f32	s11, s11, s7
+  90:	ee677aa3 	vmul.f32	s15, s15, s7
+  94:	eefd6ae6 	vcvt.s32.f32	s13, s13
+  98:	eebd8ac8 	vcvt.s32.f32	s16, s16
+  9c:	e5907040 	ldr	r7, [r0, #64]	; 0x40
+  a0:	e590103c 	ldr	r1, [r0, #60]	; 0x3c
+  a4:	e1a07687 	lsl	r7, r7, #13
+  a8:	ee655aa4 	vmul.f32	s11, s11, s9
+  ac:	e0871201 	add	r1, r7, r1, lsl #4
+  b0:	ee677aa4 	vmul.f32	s15, s15, s9
+  b4:	ee165a90 	vmov	r5, s13
+  b8:	e08c7101 	add	r7, ip, r1, lsl #2
+  bc:	ee186a10 	vmov	r6, s16
+  c0:	e3a01000 	mov	r1, #0
+  c4:	eefd5ae5 	vcvt.s32.f32	s11, s11
+  c8:	eefd7ae7 	vcvt.s32.f32	s15, s15
+  cc:	ee15aa90 	vmov	sl, s11
+  d0:	ee174a90 	vmov	r4, s15
+  d4:	e00823a5 	and	r2, r8, r5, lsr #7
+  d8:	e7e83856 	ubfx	r3, r6, #16, #9
+  dc:	e1822003 	orr	r2, r2, r3
+  e0:	e085500a 	add	r5, r5, sl
+  e4:	e0866004 	add	r6, r6, r4
+  e8:	e7992102 	ldr	r2, [r9, r2, lsl #2]
+  ec:	e7872101 	str	r2, [r7, r1, lsl #2]
+  f0:	e2811001 	add	r1, r1, #1
+  f4:	e3510010 	cmp	r1, #16
+  f8:	1afffff5 	bne	d4 <TileLightedSpecialization+0xd4>
+  fc:	ee300a01 	vadd.f32	s0, s0, s2
+ 100:	e28ee001 	add	lr, lr, #1
+ 104:	e28ccb02 	add	ip, ip, #2048	; 0x800
+ 108:	e35e0010 	cmp	lr, #16
+ 10c:	1affffd1 	bne	58 <TileLightedSpecialization+0x58>
+ 110:	ecbd8b04 	vpop	{d8-d9}
+ 114:	e28dd004 	add	sp, sp, #4
+ 118:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 11c:	00000000 	.word	0x00000000
+ 120:	3d800000 	.word	0x3d800000
+ 124:	47800000 	.word	0x47800000
